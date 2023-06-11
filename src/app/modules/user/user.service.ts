@@ -2,8 +2,9 @@ import { IUser } from "./user.interface";
 import User from "./user.model";
 
 export const createUserToDB=async(payload:IUser):Promise<IUser>=>{
-    const user = new User(payload)
-      await user.save();
+    const user = new User(payload) //---> User = class, user ---> instance
+      await user.save(); //---> .save ---> instance methods (build in methods)
+     console.log(user.fullName()) ///---> custom method
       return user;
 }
 // ---> get users

@@ -15,3 +15,8 @@ export interface IUser{
    presentAddress:string;
    permanentAddress:string;
 }
+
+// ===> custom instance method
+export interface IUserMethods {
+    fullName(): string;
+  }
