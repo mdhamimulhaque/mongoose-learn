@@ -6,10 +6,16 @@ export const createUserToDB=async(payload:IUser):Promise<IUser>=>{
       await user.save();
       return user;
 }
-
+// ---> get users
 export const getUsersFromDB=async():Promise<IUser[]>=>{
    const users = await User.find()
    return users;
+}
+
+// ---> get user
+export const getUserByIdFromDB=async (payload:string):Promise<IUser | null>=>{
+  const user = await User.findOne({id:payload})
+  return user;
 }
 
 // id:'13276',
