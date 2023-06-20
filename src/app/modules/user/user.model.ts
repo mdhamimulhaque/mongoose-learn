@@ -1,8 +1,8 @@
-import { Model, Schema, model } from "mongoose";
-import {IUser, IUserMethods} from "./user.interface";
+import { Schema, model } from "mongoose";
+import {IUser, IUserMethods, UserModel} from "./user.interface";
 
 // =====> custom instance method
-type UserModel = Model<IUser, {}, IUserMethods>;
+// type UserModel = Model<IUser, {}, IUserMethods>;
    
 // --->step-2: creating schema using interface
     const userSchema = new Schema<IUser,UserModel,IUserMethods>({
@@ -61,6 +61,14 @@ type UserModel = Model<IUser, {}, IUserMethods>;
         
       });
 
+    // ---> static
+    userSchema.static("getAdminUsers", async function getAdminUsers() {
+        const admins = await this.find({ role: "admin" });
+        console.log(admins)
+        return admins;
+      });
+      
+      
 
     //   ---> custom method
       userSchema.method('fullName', function fullName() {

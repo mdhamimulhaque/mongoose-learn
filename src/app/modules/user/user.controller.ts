@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { createUserToDB, getUserByIdFromDB, getUsersFromDB } from "./user.service";
+import { createUserToDB, getAdminUsersFromDB, getUserByIdFromDB, getUsersFromDB } from "./user.service";
 
 //===> pattern::route -> controller -> service
 export const createUser=async(req:Request, res:Response,next:NextFunction) => {
@@ -29,6 +29,18 @@ export const getUserById=async (req:Request,res:Response,next:NextFunction)=>{
         data:user
     })
 }
+// ---> get Admin users
+export const getAdminUsers = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    const user = await getAdminUsersFromDB();
+    res.status(200).json({
+      status: "success",
+      data: user,
+    });
+  };
 
 
 

@@ -19,18 +19,10 @@ export const getUserByIdFromDB=async (payload:string):Promise<IUser | null>=>{
   return user;
 }
 
-// id:'13276',
-// role:"student",
-// password:"123456",
-// name:{
-//     firstName:"Md",
-//     middleName:"Rownok",
-//     lastName:"Emon",
-// },
-// dateOfBirth:"5th march",
-// gender:"male",
-// email:"rrr@gmail.com",
-// contactNo:"+023308223",
-// emergencyContactNo:"+023308234",
-// presentAddress:"Jashore",
-// permanentAddress:"Narail"
+// ---> get admin users'
+export const getAdminUsersFromDB = async () => {
+    const admins = await User.getAdminUsers();
+    console.log(admins)
+    return admins;
+  };
+  
